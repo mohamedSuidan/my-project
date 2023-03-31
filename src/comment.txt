@@ -1,0 +1,19 @@
+{/* <td>{i + 1}</td>
+                <td>{ele.name}</td>
+                <td>{ele.email}</td>
+                <td>
+                  <Link to={`/users/update/${ele.id}`} className="link">
+                    Update
+                  </Link>
+                  <Buttons
+                    bgc="#c43227"
+                    color="#fff"
+                    borderRaduis="5px"
+                    border="none"
+                    padding="10px 20px"
+                    fontSize="17px"
+                    text="Delete"
+                    clicks={del}
+                    id={ele.id}
+                  />
+                </td> */}
