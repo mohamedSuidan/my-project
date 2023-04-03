@@ -2,28 +2,51 @@ import React from "react";
 import Cards from "../components/Cards";
 import { FaUsers } from "react-icons/fa";
 import { BsFillCartFill } from "react-icons/bs";
+import { HiTicket } from "react-icons/hi";
+import { BiCategory } from "react-icons/bi";
+import useAxios from "../hooks/fetchData";
+import { useState } from "react";
+import { useEffect } from "react";
+import Charts from "../components/Charts";
 // IoCartSharp;
 function Admin() {
+  const { response, isLoding } = useAxios({
+    url: "/dashboard",
+  });
+  const color = ["#03A9F4", "#7C4DFF", "#F44336", "#757575"];
+  const icons = [<FaUsers />, <BsFillCartFill />, <HiTicket />, <BiCategory />];
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    if (response !== null) {
+      setData(response.count);
+    } else {
+      setData([]);
+    }
+  }, [response]);
   return (
-    <div className="row">
-      <div className="col-3">
-        <Cards bgc="#fea755" number="50" text="user" svg={<FaUsers />} />
+    <>
+      <div className="row">
+        {data
+          ? data.map((ele, i) => {
+              return (
+                <div className="col-3" key={i}>
+                  <Cards
+                    bgc={color[i]}
+                    number={ele.table_rows}
+                    text={ele.table_name}
+                    svg={icons[i]}
+                  />
+                </div>
+              );
+            })
+          : ""}
       </div>
-      <div className="col-3">
-        <Cards
-          bgc="#01c1f0"
-          number="50"
-          text="products"
-          svg={<BsFillCartFill />}
-        />
+      <div className="row">
+        <div className="col-6">
+          <Charts url={"/chart-data"} />
+        </div>
       </div>
-      <div className="col-3">
-        <Cards bgc="#b58dd3" number="50" text="user" svg={<FaUsers />} />
-      </div>
-      <div className="col-3">
-        <Cards bgc="#719fb9" number="50" text="user" svg={<FaUsers />} />
-      </div>
-    </div>
+    </>
   );
 }
 

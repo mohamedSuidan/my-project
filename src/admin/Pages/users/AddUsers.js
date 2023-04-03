@@ -18,7 +18,9 @@ function AddUsers() {
   let addUser = async () => {
     let msg = await axios.post("http://localhost:4000/users/add", formData, {
       headers: {
-        Authorization: JSON.parse(localStorage.getItem("user")).token,
+        Authorization: localStorage.getItem("user")
+          ? JSON.parse(localStorage.getItem("user")).token
+          : "",
         "content-type": "multipart/form-data",
       },
     });

@@ -10,7 +10,9 @@ function AddorUpdate({ url }) {
     axios
       .post(url, data, {
         headers: {
-          Authorization: JSON.parse(localStorage.getItem("user")).token,
+          Authorization: localStorage.getItem("user")
+            ? JSON.parse(localStorage.getItem("user")).token
+            : "",
           "Content-Type": headers,
         },
       })

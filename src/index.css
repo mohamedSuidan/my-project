@@ -51,6 +51,9 @@ label {
   margin-bottom: 10px;
   margin-top: 18px;
 }
+.col-6 {
+  width: 50%;
+}
 .form-control {
   display: block;
   width: 95%;

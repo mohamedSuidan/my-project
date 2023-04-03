@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
-// import "./signin.css";
+import Inputs from "../components/Inputs";
+import Buttons from "../components/Buttons";
 function Signin() {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
@@ -18,39 +19,39 @@ function Signin() {
     if (JSON.parse(localStorage.getItem("user")).isAdmin) {
       return <Navigate to="/admin" />;
     } else {
-      return <Navigate to="/admin" />;
+      return <Navigate to="/" />;
     }
   } else {
     return (
       <div className="container">
-        <div>
-          <h2>Sign In</h2>
-          <label htmlFor="email">Username</label>
-          <br />
-          <input
-            type="email"
-            id="email"
-            name="email"
+        <h2>Sign In</h2>
+        <div className="form-group">
+          <Inputs
+            type="text"
             placeholder="email"
-            onChange={(e) => setEmail(e.target.value)}
+            id="email"
+            text="email"
+            val={(e) => setEmail(e.target.value)}
           />
-          <br />
-
-          <label htmlFor="password">Password</label>
-          <br />
-          <input
-            type="password"
-            id="password"
-            name="password"
-            onChange={(e) => setPassword(e.target.value)}
+          <Inputs
+            type="text"
             placeholder="password"
+            id="password"
+            text="password"
+            val={(e) => setPassword(e.target.value)}
           />
-          <br />
-
-          <button type="submit" onClick={signin}>
-            Sign In
-          </button>
         </div>
+        <Buttons
+          bgc="#3F51B5"
+          color="#fff"
+          borderRaduis="5px"
+          border="none"
+          padding="10px 20px"
+          fontSize="19px"
+          text="Add User"
+          margin="15px 0 0 0px"
+          clicks={signin}
+        />
       </div>
     );
   }

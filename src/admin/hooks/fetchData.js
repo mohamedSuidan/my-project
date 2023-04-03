@@ -5,19 +5,23 @@ axios.defaults.baseURL = "http://localhost:4000";
 
 const useAxios = ({ url }) => {
   const [response, setResponse] = useState(null);
-
+  const [isLoding, setLoding] = useState(true);
   const fetchData = () => {
     axios
       .get(url, {
         headers: {
-          Authorization: JSON.parse(localStorage.getItem("user")).token,
+          Authorization: localStorage.getItem("user")
+            ? JSON.parse(localStorage.getItem("user")).token
+            : "",
         },
       })
       .then((res) => {
         setResponse(res.data);
+        setLoding(false);
       })
       .catch((err) => {
         console.log(err);
+        setLoding(false);
       });
   };
 
@@ -25,7 +29,7 @@ const useAxios = ({ url }) => {
     fetchData();
   }, [url]);
 
-  return { response };
+  return { response, isLoding };
 };
 
 export default useAxios;
