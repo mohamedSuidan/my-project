@@ -1,0 +1,43 @@
+.type {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.type .row {
+  justify-content: space-between;
+  overflow: hidden;
+}
+.col-6.the-type {
+  flex-basis: 47%;
+}
+.col-6.the-type .gander {
+  background-color: #f4f4f4;
+  padding: 10px 36px 0;
+}
+.col-6.the-type img {
+  width: 135px;
+  /* margin-top: 11px; */
+  position: relative;
+  top: 9px;
+}
+.type .text {
+  margin-top: 70px;
+}
+.type .text h3 {
+  color: var(--text-color);
+  text-transform: uppercase;
+  letter-spacing: 7px;
+  font-size: 34px;
+  margin-bottom: -7px;
+  font-weight: 500;
+}
+.type .text h2 {
+  text-transform: uppercase;
+  font-size: 43px;
+  margin-top: 13px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.type .text a {
+  text-decoration: none;
+  color: var(--text-color);
+}

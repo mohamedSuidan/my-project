@@ -1,0 +1,26 @@
+.products {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.products .row {
+  justify-content: space-between;
+}
+.products .row .col-3 {
+  flex-basis: 23%;
+}
+.products .text {
+  margin-top: 17px;
+  margin-bottom: 17px;
+  text-align: center;
+}
+.products .img img {
+  width: 100%;
+}
+.products .text h3 {
+  font-weight: 500;
+  margin-bottom: 7px;
+}
+.products .text p {
+  font-weight: 500;
+  color: var(--text-color);
+}

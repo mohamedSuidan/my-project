@@ -32,15 +32,15 @@
     position: static;
   }
 }
-nav {
+.admin-nav {
   background-color: #f4f4f4;
 }
-nav {
+.admin-nav {
   display: flex;
   justify-content: flex-end;
   padding: 10px 23px;
 }
-nav svg {
+.admin-nav svg {
   position: relative;
   font-size: 25px;
   top: 1px;
@@ -83,5 +83,21 @@ td {
 }
 th {
   background-color: #333;
+  color: white;
+}
+.cart {
+  position: relative;
+}
+.cart svg {
+  font-size: 25px;
+}
+.cart .cart-count {
+  position: absolute;
+  /* right: 166px; */
+  right: -2px;
+  top: -18px;
+  background-color: var(--main-color);
+  padding: 8px 14px;
+  border-radius: 50%;
   color: white;
 }

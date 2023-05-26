@@ -1,19 +1,25 @@
 import axios from "axios";
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Inputs from "../components/Inputs";
 import Buttons from "../components/Buttons";
 function Signin() {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
-
+  let [text, setText] = useState("");
+  let navigate = useNavigate();
   let signin = async () => {
     let data = await axios.post("http://localhost:4000/signin", {
       email: email,
       password: password,
     });
-    console.log(data);
-    localStorage.setItem("user", JSON.stringify(data.data));
+    console.log(data.data);
+    if (typeof data.data === "string") {
+      setText(data.data);
+    } else {
+      localStorage.setItem("user", JSON.stringify(data.data));
+      return navigate("/");
+    }
   };
   if (localStorage.getItem("user")) {
     if (JSON.parse(localStorage.getItem("user")).isAdmin) {
@@ -24,6 +30,7 @@ function Signin() {
   } else {
     return (
       <div className="container">
+        {text === "" ? "" : <div className="danger-alert">{text}</div>}
         <h2>Sign In</h2>
         <div className="form-group">
           <Inputs

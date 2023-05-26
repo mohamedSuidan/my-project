@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Delete from "../hooks/Delete";
 import Buttons from "./Buttons";
-function DataTable({ data, setIt, arr, columns, url, type }) {
+function DataTable({ data, setIt, arr, columns, url, type, del_btn }) {
   let { dels } = Delete({
     url: url,
   });
@@ -72,9 +72,22 @@ function DataTable({ data, setIt, arr, columns, url, type }) {
           })}
         </tbody>
       </table>
-      <Link to={`/${type}/add`} className="link add">
-        Add {type}
-      </Link>
+      {!del_btn ? (
+        <Link to={`/${type}/add`} className="link add">
+          Add {type}
+        </Link>
+      ) : (
+        <Buttons
+          bgc="#c43227"
+          color="#fff"
+          borderRaduis="5px"
+          border="none"
+          padding="10px 20px"
+          fontSize="17px"
+          text="Delete All"
+          clicks={""}
+        />
+      )}
     </>
   );
 }

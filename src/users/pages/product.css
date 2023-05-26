@@ -1,0 +1,15 @@
+.single {
+  padding: "60px 0";
+}
+.single .row.spaces {
+  justify-content: space-between;
+}
+.single .col-4.spaces {
+  flex-basis: 30.5%;
+}
+.single .col-6.spaces {
+  flex-basis: 48%;
+}
+.single img {
+  width: 100%;
+}
